@@ -3,7 +3,6 @@ const rateHolder = document.querySelector('.rate__holder')
 const thankyouCard = document.querySelector('.thankyou-card')
 
 const ln = rates.length
-let selected;
 
 rates.forEach(rate => rate.addEventListener('mousedown', handleRates))
 
