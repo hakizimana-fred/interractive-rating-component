@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+
+$colors: (
+    'orange': hsl(25, 97%, 53%),
+    'white': hsl(0, 0%, 100%),
+    'light-grey': hsl(217, 12%, 63%),
+    'medium-grey': hsl(216, 12%, 54%),
+    'dark-blue': hsl(213, 19%, 18%),
+    'very-dark-blue': hsl(216, 12%, 8%)
+);
+
+
+@function getColors($color){
+    @return map-get($colors, $color);
+}
+
+@mixin flexDirection($direction) {
+    justify-content: $direction;
+    align-items: $direction;
+}
+
+body {
+    display: flex;
+    @include flexDirection(center);
+    height: 100vh;
+    font-size: 0.9375rem;
+    font-family: 'Open Sans', sans-serif;
+    background: getColors('very-dark-blue');
+}
+
+
+
+.wrapper {
+    background: getColors('dark-blue');
+    width: min(100% - 25px, 400px);
+    flex-direction: column;
+    padding: 20px 30px;
+    border-radius: 15px;
+
+    &__star {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: getColors('medium-grey');
+        padding: 10px;
+        margin-bottom: 40px;
+
+    }
+
+    &__content {
+        h1 {
+            margin-bottom: 25px;
+            font-weight: 700;
+            color: getColors('white');
+        }
+        p {
+            color: getColors('light-grey');
+            line-height: 1.8;
+            width: 320px;
+            margin-bottom: 20px;
+        }
+    }
+    &__rates {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        margin-bottom: 20px;
+        gap: 20px;
+    }
+
+
+
+    .rate {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: getColors('medium-grey');
+        text-align: center;
+        display: flex;
+        @include flexDirection(center);
+        color: getColors('white');
+        font-weight: 400; 
+
+        &__active {
+            background: getColors('orange');
+        }
+    }
+    
+    
+    
+    
+    &__btn {
+        display: inline-block;
+        padding: 10px 20px;
+        width: 90%;
+        cursor: pointer;
+        background: getColors('orange');
+        color: getColors('white');
+        border: none;
+        outline: none;
+        font-weight: 700;
+        font-size: 1.5rem;
+        border-radius: 25px;
+
+    }
+}
+
+
+.thankyou-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: getColors('white');
+    text-align: center;
+    .wrapper__img--holder{
+        width: 150px;
+        height: 150px;
+    }
+
+    .selected {
+        border-radius: 25px;
+        background: getColors('very-dark-blue');
+        padding: 10px;
+        color: getColors('orange');
+        margin-bottom: 20px;
+    }
+
+    h1{
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+    p {
+        color: getColors('light-grey');
+        line-height: 1.8;
+        font-weight: 400;
+    }
+}
+
+.d-none {
+    display: none;
+}
